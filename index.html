@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Prototypal versus Classical Inheritance</h1>
+					<p>Ali Groening</p>
+				</section>
+				<section>
+					<h1>So what's the deal?</h1>
+					<ul>
+						<li>Javascript = prototye</li>
+						<li>Java = classical</li>
+					</ul>
+				</section>
+				<section>
+					<h1>What is Inheritance?</h1>
+					<ul>
+						<li>dictionary: "something that is or may be inherited"</li>
+						<li>One obejct get access to the properties and methods of another object.</li>
+					</ul>
+				</section>
+				<section>
+					<h1>Prototye</h1>
+					<ul>
+						<li>Everything except primitives are objects in Javascript</li>
+						<li>Most, if not all, objects are instances of `Object`</li>
+						<li>Inherits from objects, ie. `Object.create()`</li>
+						<li>prototype: template object which is linked to another object</li>
+						<li>"differential inheritance": creates invisible link to the parent object</li>
+					</ul>
+				</section>
+				<section>
+					<h1>Classical</h1>
+					<ul>
+						<li>classes can only extend from other classes</li>
+						<li>classes are immutable at runtime</li>
+						<li>base classes and derived classes: dervied inherits base classes</li>
+						<li>traditionally, the derived class will create overrides</li>
+						<li>This is truely not in javascript, but can be imitated via prototypal</li>
+					</ul>
+				</section>
+				<section>
+					<h1>Inheritance Patterns</h1>
+					<ul>
+						<li>
+							<p>Prototype</p>
+							<ul>
+								<li>constructor / psudo classical</li>
+								<li>prototype</li>
+							</ul>
+						</li>
+						<li>
+							<p>Class</p>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h1>Prototypal Pattern Example</h1>
+				</section>
+				<section>
+					<h1>Constructor/Psuedo Classical Example</h1>
+				</section>
+				<section>
+					<h1>Pros/Cons</h1>
+				</section>
+				<section>
+					<h1>`class` keyword</h1>
+				</section>
+				<section>
+					<h1>Pros/Cons</h1>
+				</section>
+				<section>
+					<h1>Thanks!</h1>
+					<p>questions?</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
