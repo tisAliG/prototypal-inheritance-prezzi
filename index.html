@@ -29,68 +29,73 @@
 					<p>Ali Groening</p>
 				</section>
 				<section>
-					<h1>So what's the deal?</h1>
+					<h3>What is Inheritance?</h3>
 					<ul>
-						<li>Javascript = prototye</li>
-						<li>Java = classical</li>
+						<li>dictionary.com: "something that is or may be inherited"</li>
+						<li>One obejct can access the properties and methods of another object.</li>
 					</ul>
 				</section>
 				<section>
-					<h1>What is Inheritance?</h1>
-					<ul>
-						<li>dictionary: "something that is or may be inherited"</li>
-						<li>One obejct get access to the properties and methods of another object.</li>
-					</ul>
+					<section>
+						<h3>Prototye</h3>
+						<ul>
+							<li>Prototype is a property of an object</li>
+							<li>The prototype property can hold properties and methods</li>
+							<li>Protoypes can be "linked" to other objects, specifically instances of the object, which creates "differential" inheritance</li>
+							<li>Objects can only "link"/inherit directly from other objects</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Example of Prototypal Pattern</h3>
+						<pre><code data-trim>
+							const Person = {
+								introduce: function () {
+									console.log( `${ this.firstName } ${ this.lastName } is in da house!` );
+								}
+							};
+							const ali = Object.create( Person, {
+								firstName: { value: 'Ali' },
+								lastName: { value: 'G' }
+							} );
+							ali.introduce(); //Ali G is in da house!
+						</code></pre>
+					</section>
+					<section>
+						<h3>Function Constructor/Psuedo Classical Pattern</h3>
+						<pre><code data-trim>
+							function Person( firstName, lastName ) {
+								this.firstName = firstName;
+								this.lastName = lastName;
+							};
+							Person.prototype.introduce = function () {
+								console.log( `${ this.firstName } ${ this.lastName } is in da house!` );
+							};
+							const ali = new Person( 'Ali', 'G' );
+							ali.introduce(); //Ali G is in da house!
+						</code></pre>
+					</section>
 				</section>
 				<section>
-					<h1>Prototye</h1>
-					<ul>
-						<li>Everything except primitives are objects in Javascript</li>
-						<li>Most, if not all, objects are instances of `Object`</li>
-						<li>Inherits from objects, ie. `Object.create()`</li>
-						<li>prototype: template object which is linked to another object</li>
-						<li>"differential inheritance": creates invisible link to the parent object</li>
-					</ul>
-				</section>
-				<section>
-					<h1>Classical</h1>
+					<h3>Classical</h3>
 					<ul>
 						<li>classes can only extend from other classes</li>
-						<li>classes are immutable at runtime</li>
+						<li>classes create hierarchical class taxonomies</li>
 						<li>base classes and derived classes: dervied inherits base classes</li>
 						<li>traditionally, the derived class will create overrides</li>
-						<li>This is truely not in javascript, but can be imitated via prototypal</li>
+						<li>classes are the blueprint in which the objects are created from</li>
+						<li>This is truely not in javascript, but can be imitated via prototypal inheritance with the function constructor pattern</li>
 					</ul>
 				</section>
 				<section>
-					<h1>Inheritance Patterns</h1>
+					<h3>Pros/Cons</h3>
 					<ul>
-						<li>
-							<p>Prototype</p>
-							<ul>
-								<li>constructor / psudo classical</li>
-								<li>prototype</li>
-							</ul>
-						</li>
-						<li>
-							<p>Class</p>
-						</li>
+						<li>"simple"/"verbose"</li>
+						<li>objects/classes create objects</li>
+						<li>mutable/immutable</li>
+						<li>dynamic/not dynamic</li>
+						<li>redundancy</li>
+						<li>composition</li>
 					</ul>
-				</section>
-				<section>
-					<h1>Prototypal Pattern Example</h1>
-				</section>
-				<section>
-					<h1>Constructor/Psuedo Classical Example</h1>
-				</section>
-				<section>
-					<h1>Pros/Cons</h1>
-				</section>
-				<section>
-					<h1>`class` keyword</h1>
-				</section>
-				<section>
-					<h1>Pros/Cons</h1>
 				</section>
 				<section>
 					<h1>Thanks!</h1>
