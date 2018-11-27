@@ -25,66 +25,116 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h1>Prototypal versus Classical Inheritance</h1>
+					<h1>Prototypal Inheritance &amp; Prototypal Patterns</h1>
 					<p>Ali Groening</p>
 				</section>
 				<section>
 					<h3>What is Inheritance?</h3>
 					<ul>
 						<li>dictionary.com: "something that is or may be inherited"</li>
-						<li>One obejct can access the properties and methods of another object.</li>
+						<li>One object can access the properties and methods of another object.</li>
 					</ul>
 				</section>
 				<section>
+					<h3>Prototype</h3>
+					<ul>
+						<li>Prototype is a property of an object</li>
+						<li>The Prototype property can hold properties and methods</li>
+						<li>Prototypes can be "linked" to other objects, specifically instances of the object, which create "differential" inheritance</li>
+						<li>Objects can only "link"/inherit directly from other objects</li>
+					</ul>
+				</section>
+				<section>
+					<h1>Prototype Patterns</h1>
+				</section>
+				<section>
 					<section>
-						<h3>Prototye</h3>
-						<ul>
-							<li>Prototype is a property of an object</li>
-							<li>The prototype property can hold properties and methods</li>
-							<li>Protoypes can be "linked" to other objects, specifically instances of the object, which creates "differential" inheritance</li>
-							<li>Objects can only "link"/inherit directly from other objects</li>
-						</ul>
+						<h3>Function Constructor/Psuedo Classical Pattern</h3>
+						<pre><code data-trim>
+							// "constructor"
+							function Person( firstName, lastName ) {
+								this.firstName = firstName;
+								this.lastName = lastName;
+							};
+
+							Person.prototype.introduce = function () {
+								console.log( `${ this.firstName } ${ this.lastName } is in da house!` );
+							};
+
+							const ali = new Person( 'Ali', 'G' );
+
+							ali.introduce(); //Ali G is in da house!
+						</code></pre>
+						<p>A method is created which will act as the constructor and then anything we want to add to that method's prototype will be set as the new object's Prototype.</p>
 					</section>
 					<section>
-						<h3>Example of Prototypal Pattern</h3>
+						<img src="lib/imgs/functional-constructor-object.png" alt="Functional Constructor Object">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Prototypal Pattern</h3>
 						<pre><code data-trim>
+							// base object
 							const Person = {
 								introduce: function () {
 									console.log( `${ this.firstName } ${ this.lastName } is in da house!` );
 								}
 							};
+
 							const ali = Object.create( Person, {
 								firstName: { value: 'Ali' },
 								lastName: { value: 'G' }
 							} );
+
 							ali.introduce(); //Ali G is in da house!
+						</code></pre>
+						<p>`Object.create()` returns a new object and instantiates it behind the scenes.</p>
+					</section>
+					<section>
+						<img src="lib/imgs/prototypal-object.png" alt="Prototypal Object">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>ES6 `class`</h3>
+						<pre><code data-trim>
+							class Person {
+
+								constructor( firstName, lastName ) {
+									this.firstName = firstName;
+									this.lastName = lastName;
+								}
+
+								introduce (){
+									console.log( `${ this.firstName } ${ this.lastName } is in da house!` );
+								}
+
+							}
+
+							const ali = new Person( 'Ali', 'G' );
+
+							ali.introduce();
 						</code></pre>
 					</section>
 					<section>
-						<h3>Function Constructor/Psuedo Classical Pattern</h3>
-						<pre><code data-trim>
-							function Person( firstName, lastName ) {
-								this.firstName = firstName;
-								this.lastName = lastName;
-							};
-							Person.prototype.introduce = function () {
-								console.log( `${ this.firstName } ${ this.lastName } is in da house!` );
-							};
-							const ali = new Person( 'Ali', 'G' );
-							ali.introduce(); //Ali G is in da house!
-						</code></pre>
+						<img src="lib/imgs/class-object.png" alt="Class Object">
 					</section>
 				</section>
 				<section>
-					<h3>Classical</h3>
-					<ul>
-						<li>classes can only extend from other classes</li>
-						<li>classes are the blueprint in which the objects are created from</li>
-						<li>base classes and derived classes: dervied inherits base classes</li>
-						<li>This is truely not in javascript, but can be imitated via prototypal inheritance with the function constructor pattern</li>
-					</ul>
+					<section>
+						<h3>Mutable</h3>
+						<pre><code data-trim>
+							const dana = new Person( 'Dana', 'P' );
+
+							Person.prototype.canSpeakRomanian = true;
+						</code></pre>
+					</section>
+					<section>
+						<img height="650px" src="lib/imgs/mutable-objects.png" alt="Mutable Objects">
+					</section>
 				</section>
-				<section>
+				<!-- <section>
 					<h3>Pros/Cons</h3>
 					<ul>
 						<li>"simple"/"verbose"</li>
@@ -94,7 +144,7 @@
 						<li>redundancy</li>
 						<li>composition</li>
 					</ul>
-				</section>
+				</section> -->
 				<section>
 					<h1>Thanks!</h1>
 					<p>questions?</p>

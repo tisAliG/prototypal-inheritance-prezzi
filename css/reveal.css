@@ -1589,3 +1589,10 @@ body {
 
 .zoomed .reveal .roll span:after {
   visibility: hidden; }
+
+/*********************************************
+ * OVERRIDES
+ *********************************************/
+.reveal .slides section p {
+    font-size: 60%;
+}
